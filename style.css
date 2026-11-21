@@ -1,0 +1,169 @@
+@font-face {
+    font-family: 'retro';
+    src: url('fonts/RETRO.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'dot';
+    src: url('fonts/lcddot.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+/* =================================
+   SASHA.FM DOWNLOAD PAGE
+================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    background: #090D10;
+    color: #70E8ED;
+    font-family: Arial, sans-serif;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* MAIN CONTAINER */
+
+.download-container {
+    width: 327px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+}
+
+/* LOGO */
+
+.logo {
+    font-size: 38px;
+    font-weight: 800;
+    letter-spacing: 3px;
+    color: #70E8ED;
+opacity: 0.9;
+    text-shadow:
+        0 0 5px rgba(112, 232, 237, 0.5),
+        0 0 15px rgba(112, 232, 237, 0.2);
+}
+
+/* DOWNLOAD FORM */
+
+.download-form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* PASSWORD INPUT */
+
+input {
+    width: 100%;
+    height: 44px;
+opacity: 0.9;
+    background: #10191D;
+    border: 1px solid #28545A;
+    border-radius: 1415px;
+
+    padding: 0 14px;
+
+    color: #70E8ED;
+    font-size: 12px;
+    letter-spacing: 2px;
+  text-shadow:
+        0 0 4px rgba(112, 232, 237, 0.8),
+        0 0 10px rgba(112, 232, 237, 0.5);
+    outline: none;
+    transition: border-color 0.15s ease;
+     box-shadow:
+        0 0 5px rgba(112, 232, 237, 0.2),
+        0 0 12px rgba(112, 232, 237, 0.1);
+}
+
+input::placeholder {
+    color: #52777A;
+}
+input:hover {
+    border-color: #4D9DA1;
+
+    box-shadow:
+        0 0 4px rgba(112, 232, 237, 0.18),
+        0 0 9px rgba(112, 232, 237, 0.10);
+}
+
+/* FOCUS */
+input:focus {
+    border-color: #62C5C9;
+
+    box-shadow:
+        0 0 4px rgba(112, 232, 237, 0.28),
+        0 0 10px rgba(112, 232, 237, 0.16);
+}
+
+/* DOWNLOAD BUTTON */
+
+button {
+    width: 100%;
+    height: 44px;
+
+    background: #16373B;
+    border: 1px solid #39777D;
+    border-radius: 24234px;
+
+    color: #70E8ED;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 3px;
+
+    cursor: pointer;
+    transition: background 0.15s ease;
+}
+
+button:hover {
+    background: #205057;
+}
+
+button:active {
+    background: #102A2E;
+}
+
+/* STATUS MESSAGE */
+#password {
+    font-size: 90px;
+    opacity: 0.9;
+}
+#status {
+    min-height: 14px;
+    text-align: center;
+    font-size: 11px;
+    letter-spacing: 1px;
+    color: #70E8ED;
+}
+
+
+/* DOWNLOAD BUTTON - HIDDEN BY DEFAULT */
+
+#download-button {
+    font-family: 'retro', sans-serif;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.4s ease, visibility 0.4s ease;
+}
+
+/* REVEAL WHEN PASSWORD IS CORRECT */
+
+#download-button.visible {
+    opacity: 0.9;
+    visibility: visible;
+    pointer-events: auto;
+}
+

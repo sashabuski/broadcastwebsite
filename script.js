@@ -150,6 +150,7 @@ function setLiveStatus(isLive) {
 
 function setPowerState(isOn) {
     powerButton.classList.toggle("active", isOn);
+    document.querySelector(".logo").classList.toggle("active", isOn);
 }
 
 // =================================

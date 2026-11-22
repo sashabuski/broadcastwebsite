@@ -226,13 +226,14 @@ button:active {
     border-radius: 50%;
     border: 2px solid #ffffff;
     background: #000000;
-    
+    transition: filter 0.6s ease-in-out; 
     color: #ffffff;
     cursor: pointer;
     display: flex;
 align-items: center;
 justify-content: center;
 padding: 0;
+
 }
 .power-button:hover {
 box-shadow: 0 0 8px #ffffff;
@@ -241,6 +242,7 @@ box-shadow: 0 0 8px #ffffff;
     width: 70px;
     height: 70px;
     display: block;
+    transition: filter 0.6s ease-in-out;
 }
 
 .power-button.active {
@@ -297,23 +299,36 @@ box-shadow: 0 0 8px #ffffff;
     letter-spacing: 2px;
     opacity: .7;
 }
-
-.logo,
 .radio-player {
     display: none;
     opacity: 0;
     transition: opacity 0.4s ease, display 0.4s allow-discrete;
 }
 
-.logo.visible,
 .radio-player.visible {
     display: flex;
     opacity: 1;
 }
 
-@starting-style {
-    .logo.visible,
-    .radio-player.visible {
-        opacity: 0;
-    }
+/* LOGO - ALWAYS VISIBLE */
+.logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 25px;
+    opacity: 1;
+}
+
+.logo img {
+    width: 150px;
+    height: auto;
+    filter: none;
+    
+    transition: filter 0.6s ease-in-out;
+}
+
+.logo.active img {
+    filter:
+        drop-shadow(0 0 4px white)
+        drop-shadow(0 0 12px rgba(255, 255, 255, 0.5));
 }

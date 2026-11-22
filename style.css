@@ -394,6 +394,6 @@ box-shadow: 0 0 8px #ffffff;
     }
 }
 
-.password-box:focus-within .password-cursor {
+.password-box.is-empty:focus-within .password-cursor {
     display: block;
 }

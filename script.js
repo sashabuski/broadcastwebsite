@@ -479,11 +479,8 @@ passwordInput.addEventListener("input", () => {
         dot.className = "password-dot";
         passwordDots.appendChild(dot);
     }
-
+passwordBox.classList.toggle("is-empty", passwordInput.value.length === 0);
 });
-
+passwordBox.classList.toggle("is-empty", passwordInput.value.length === 0);
 const passwordCursor = document.getElementById("password-cursor");
 
-passwordInput.addEventListener("input", () => {
-    passwordCursor.style.display = "block";
-});

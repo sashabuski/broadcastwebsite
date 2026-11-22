@@ -15,6 +15,38 @@
             <img src="chosenMascot.png" alt="SASHA.FM Mascot" style="width: 200px;">
         </div>
 
+
+<div class="radio-player">
+
+    <div class="station-name">MIMI RADIO</div>
+    <div class="station-frequency">SASHA.FM</div>
+
+    <div class="live-status" id="live-status">
+        <span class="live-dot" id="live-dot"></span>
+        <span id="live-text">OFFLINE</span>
+    </div>
+
+    <button class="power-button" id="power-button" aria-label="Connect to radio">
+        <span class="power-icon">⏻</span>
+    </button>
+
+    <div class="volume-control">
+        <span class="volume-icon">−</span>
+        <input
+            type="range"
+            id="volume-slider"
+            min="0"
+            max="100"
+            value="70"
+        >
+        <span class="volume-icon">+</span>
+    </div>
+
+    <p id="player-status">RADIO OFFLINE</p>
+
+</div>
+
+
         <div class="download-form">
 
             <input
@@ -34,6 +66,7 @@
 
     </main>
 
+        <script src="https://cdn.jsdelivr.net/npm/livekit-client/dist/livekit-client.umd.min.js"></script>
     <script src="script.js"></script>
 
 </body>

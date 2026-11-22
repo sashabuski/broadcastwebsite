@@ -35,7 +35,7 @@ passwordInput.addEventListener("input", () => {
 
     // Hide button until password is verified again
     downloadButton.classList.remove("visible");
-
+radioPlayer.classList.remove("visible");
     // Clear previous download link
     downloadUrl = null;
 
@@ -480,4 +480,10 @@ passwordInput.addEventListener("input", () => {
         passwordDots.appendChild(dot);
     }
 
+});
+
+const passwordCursor = document.getElementById("password-cursor");
+
+passwordInput.addEventListener("input", () => {
+    passwordCursor.style.display = "block";
 });

@@ -10,7 +10,7 @@ const WORKER_URL = "https://sasha-download-api.sashabuskin12.workers.dev/api/dow
 const passwordInput = document.getElementById("password");
 const downloadButton = document.getElementById("download-button");
 const statusMessage = document.getElementById("status");
-const logo = document.querySelector(".logo");
+//const logo = document.querySelector(".logo");
 const radioPlayer = document.querySelector(".radio-player");
 // State
 let downloadUrl = null;
@@ -19,7 +19,8 @@ let requestNumber = 0;
 
 // Hide download button initially
 downloadButton.classList.remove("visible");
-logo.classList.remove("visible");
+radioPlayer.classList.remove("visible");
+//logo.classList.remove("visible");
 radioPlayer.classList.remove("visible");
 // =================================
 // AUTOMATIC PASSWORD VERIFICATION
@@ -72,7 +73,7 @@ passwordInput.addEventListener("input", () => {
 
                 // Reveal download button
                 downloadButton.classList.add("visible");
-logo.classList.add("visible");
+//logo.classList.add("visible");
 radioPlayer.classList.add("visible");
             } else {
 
@@ -216,6 +217,93 @@ function handleTrackUnsubscribed(track) {
 }
 
 // =================================
+// SASHA.FM EQUALISER
+// =================================
+
+const equaliserCanvas = document.getElementById("equaliser");
+const equaliserContext = equaliserCanvas.getContext("2d");
+
+const BAR_COUNT = 18;
+const SEGMENT_COUNT = 7;
+
+function updateEqualiser(bands) {
+
+    const ctx = equaliserContext;
+    const width = equaliserCanvas.width;
+    const height = equaliserCanvas.height;
+
+    ctx.clearRect(0, 0, width, height);
+
+    const horizontalGap = width * 0.018;
+    const barWidth =
+        (width - horizontalGap * (BAR_COUNT - 1)) / BAR_COUNT;
+
+    const segmentHeight = height * 0.085;
+    const verticalGap = height * 0.035;
+
+    for (let i = 0; i < BAR_COUNT; i++) {
+
+        let level = 0;
+
+        // Average the incoming frequency bands.
+        const start = Math.floor(i * bands.length / BAR_COUNT);
+
+        const end = Math.min(
+            bands.length,
+            Math.max(start + 1, Math.ceil((i + 1) * bands.length / BAR_COUNT))
+        );
+
+        let total = 0;
+
+        for (let j = start; j < end; j++) {
+            total += bands[j];
+        }
+
+        level = Math.max(0, Math.min(1, total / (end - start)));
+
+        // Calculate illuminated segments.
+        const litSegments = Math.ceil(
+            level * (SEGMENT_COUNT - 1)
+        ) + 1;
+
+        const x = i * (barWidth + horizontalGap);
+
+        // Draw segments from bottom upwards.
+        for (let j = 0; j < litSegments; j++) {
+
+            const y = height -
+                segmentHeight -
+                j * (segmentHeight + verticalGap);
+
+            const radius = 1.2;
+
+            ctx.beginPath();
+            ctx.roundRect(
+                x,
+                y,
+                barWidth,
+                segmentHeight,
+                radius
+            );
+
+            // Subtle cyan glow.
+            ctx.shadowColor = "#ffffff";
+            ctx.shadowBlur = 2.5;
+            ctx.fillStyle = "#ffffff";
+            ctx.fill();
+
+            // Crisp foreground.
+            ctx.shadowBlur = 0;
+            ctx.fillStyle = "#ffffff";
+            ctx.fill();
+        }
+    }
+}
+
+// Draw an empty equaliser initially.
+updateEqualiser(new Array(32).fill(0));
+
+// =================================
 // CONNECT TO RADIO
 // =================================
 
@@ -261,7 +349,20 @@ async function connectToRadio() {
 
         // Create LiveKit room
         const room = new LivekitClient.Room();
+ 
 
+        room.on(
+    LivekitClient.RoomEvent.DataReceived,
+    (payload, participant, kind, topic) => {
+        if (topic !== "sasha-fm-equaliser") return;
+
+        if (payload.length !== 32) return;
+
+        const bands = Array.from(payload, value => value / 255);
+
+        updateEqualiser(bands);
+    }
+);
         room
             .on(
                 LivekitClient.RoomEvent.TrackSubscribed,
@@ -332,7 +433,7 @@ async function disconnectFromRadio() {
 
     audioElements.forEach(element => element.remove());
     audioElements.clear();
-
+updateEqualiser(new Array(32).fill(0));
     setPowerState(false);
     setPlayerStatus("RADIO OFFLINE");
 }
@@ -364,3 +465,4 @@ volumeSlider.addEventListener("input", () => {
     });
 
 });
+

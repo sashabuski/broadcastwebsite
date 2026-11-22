@@ -22,8 +22,8 @@
 
 body {
     min-height: 100vh;
-    background: #090D10;
-    color: #70E8ED;
+    background: #000000;
+    color: #ffffff;
     font-family: Arial, sans-serif;
 
     display: flex;
@@ -34,7 +34,7 @@ body {
 /* MAIN CONTAINER */
 
 .download-container {
-    width: 327px;
+    width: 196px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -47,11 +47,11 @@ body {
     font-size: 38px;
     font-weight: 800;
     letter-spacing: 3px;
-    color: #70E8ED;
+    color: #ffffff;
 opacity: 0.9;
     text-shadow:
-        0 0 5px rgba(112, 232, 237, 0.5),
-        0 0 15px rgba(112, 232, 237, 0.2);
+        0 0 5px #ffffff,
+        0 0 15px #ffffff;
 }
 
 /* DOWNLOAD FORM */
@@ -69,18 +69,18 @@ input {
     width: 100%;
     height: 44px;
 opacity: 0.9;
-    background: #10191D;
-    border: 1px solid #28545A;
+    background: #000000;
+    border: 1px solid #ffffff;
     border-radius: 1415px;
 
     padding: 0 14px;
 
-    color: #70E8ED;
+    color: #ffffff;
     font-size: 12px;
     letter-spacing: 2px;
   text-shadow:
-        0 0 4px rgba(112, 232, 237, 0.8),
-        0 0 10px rgba(112, 232, 237, 0.5);
+        0 0 2px #ffffff,
+        0 0 5px #ffffff;
     outline: none;
     transition: border-color 0.15s ease;
      box-shadow:
@@ -89,10 +89,10 @@ opacity: 0.9;
 }
 
 input::placeholder {
-    color: #52777A;
+    color: #ffffff;
 }
 input:hover {
-    border-color: #4D9DA1;
+    border-color: #ffffff;
 
     box-shadow:
         0 0 4px rgba(112, 232, 237, 0.18),
@@ -101,7 +101,7 @@ input:hover {
 
 /* FOCUS */
 input:focus {
-    border-color: #62C5C9;
+    border-color: #ffffff;
 
     box-shadow:
         0 0 4px rgba(112, 232, 237, 0.28),
@@ -114,11 +114,11 @@ button {
     width: 100%;
     height: 44px;
 
-    background: #16373B;
-    border: 1px solid #39777D;
+    background: #000000;
+    border: 1px solid #ffffff;
     border-radius: 24234px;
 
-    color: #70E8ED;
+    color: #ffffff;
     font-size: 12px;
     font-weight: bold;
     letter-spacing: 3px;
@@ -128,7 +128,7 @@ button {
 }
 
 button:hover {
-    background: #205057;
+    background: #1f1f1f;
 }
 
 button:active {
@@ -145,7 +145,7 @@ button:active {
     text-align: center;
     font-size: 11px;
     letter-spacing: 1px;
-    color: #70E8ED;
+    color: #ffffff;
 }
 
 
@@ -176,7 +176,7 @@ button:active {
     flex-direction: column;
     align-items: center;
     gap: 15px;
-    color: #70E8ED;
+    color: #ffffff;
 }
 
 .station-name {
@@ -200,7 +200,7 @@ button:active {
     display: flex;
     align-items: center;
     gap: 9px;
-    border: 1px solid #39777D;
+    border: 1px solid #ffffff;
     border-radius: 30px;
     padding: 7px 18px;
     font-family: 'retro', sans-serif;
@@ -216,34 +216,40 @@ button:active {
 }
 
 .live-status.is-live .live-dot {
-    background: #ff3030;
-    box-shadow: 0 0 12px #ff3030;
+    background: #ff92e7;
+    box-shadow: 0 0 12px #9D97C0;
 }
 
 .power-button {
-    width: 76px;
-    height: 76px;
+    width: 150px;
+    height: 150px;
     border-radius: 50%;
-    border: 2px solid #70E8ED;
-    background: #102326;
-    box-shadow: 0 0 15px rgba(112,232,237,.35);
-    color: #70E8ED;
+    border: 2px solid #ffffff;
+    background: #000000;
+    
+    color: #ffffff;
     cursor: pointer;
     display: flex;
 align-items: center;
 justify-content: center;
 padding: 0;
 }
-
+.power-button:hover {
+box-shadow: 0 0 8px #ffffff;
+}
 .power-icon {
-    width: 38px;
-    height: 38px;
+    width: 70px;
+    height: 70px;
     display: block;
 }
 
 .power-button.active {
-    background: #205057;
-    box-shadow: 0 0 25px rgba(112,232,237,.65);
+    background: #000000;
+    box-shadow: 0 0 16px #ffffff;
+}
+.power-button.active:hover {
+    background: #000000;
+    box-shadow: 0 0 24px #ffffff;
 }
 
 .volume-control {
@@ -255,14 +261,14 @@ padding: 0;
 
 .volume-icon {
     font-size: 22px;
-    color: #70E8ED;
+    color: #ffffff;
 }
 
 #volume-slider {
     flex: 1;
     height: 5px;
     appearance: none;
-    background: #28545A;
+    background: #ffffff;
     border-radius: 10px;
     cursor: pointer;
 }
@@ -272,8 +278,16 @@ padding: 0;
     width: 17px;
     height: 17px;
     border-radius: 50%;
-    background: #70E8ED;
-    box-shadow: 0 0 10px #70E8ED;
+    background: #ffffff;
+    box-shadow: 0 0 10px #ffffff;
+}
+#equaliser {
+    display: block;
+    width: 220px;
+    height: 50px;
+    max-width: 100%;
+    opacity: 0.75;
+    
 }
 
 #player-status {
@@ -287,9 +301,19 @@ padding: 0;
 .logo,
 .radio-player {
     display: none;
+    opacity: 0;
+    transition: opacity 0.4s ease, display 0.4s allow-discrete;
 }
 
 .logo.visible,
 .radio-player.visible {
     display: flex;
+    opacity: 1;
+}
+
+@starting-style {
+    .logo.visible,
+    .radio-player.visible {
+        opacity: 0;
+    }
 }

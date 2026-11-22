@@ -322,7 +322,7 @@ async function connectToRadio() {
         const broadcasting = await checkBroadcastStatus();
 
         if (!broadcasting) {
-            setPlayerStatus("RADIO OFFLINE");
+            setPlayerStatus("RADIO OFF");
             return;
         }
 
@@ -467,3 +467,17 @@ volumeSlider.addEventListener("input", () => {
 
 });
 
+const passwordDots = document.getElementById("password-dots");
+const passwordBox = document.getElementById("password-box");
+
+passwordInput.addEventListener("input", () => {
+
+    passwordDots.innerHTML = "";
+
+    for (let i = 0; i < passwordInput.value.length; i++) {
+        const dot = document.createElement("span");
+        dot.className = "password-dot";
+        passwordDots.appendChild(dot);
+    }
+
+});

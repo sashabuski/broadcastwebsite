@@ -51,19 +51,24 @@
         <span class="volume-icon">+</span>
     </div>
 
-    <p id="player-status">RADIO OFFLINE</p>
+    <p id="player-status" style="
+    margin-bottom: 24px" >RADIO OFFLINE</p>
 
 </div>
 
 
         <div class="download-form">
 
-            <input
-                type="password"
-                id="password"
-                placeholder=""
-                autocomplete="off"
-            >
+            <div class="password-box" id="password-box">
+    <input
+        maxlength="6"
+        type="password"
+        id="password"
+        autocomplete="off"
+        spellcheck="false"
+    >
+    <div class="password-dots" id="password-dots"></div>
+</div>
 
             <button id="download-button">
                 DOWNLOAD (x64)

@@ -229,10 +229,16 @@ button:active {
     box-shadow: 0 0 15px rgba(112,232,237,.35);
     color: #70E8ED;
     cursor: pointer;
+    display: flex;
+align-items: center;
+justify-content: center;
+padding: 0;
 }
 
 .power-icon {
-    font-size: 38px;
+    width: 38px;
+    height: 38px;
+    display: block;
 }
 
 .power-button.active {
